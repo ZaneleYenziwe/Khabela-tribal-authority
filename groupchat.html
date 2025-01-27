@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Staff Group Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .chat-box {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        .chat-messages {
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background-color: #fff;
+        }
+        .chat-input {
+            margin-top: 10px;
+        }
+        .chat-input input, .chat-input textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .chat-input button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Staff Group Chat</h1>
+    
+    <div class="chat-box">
+        <div class="chat-messages" id="chatMessages">
+            <!-- Chat messages will appear here -->
+        </div>
+        
+        <div class="chat-input">
+            <input type="text" id="username" placeholder="Your Name" required><br>
+            <textarea id="message" placeholder="Type your message here..." required></textarea><br>
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    
+    <script>
+        function sendMessage() {
+            var username = document.getElementById('username').value;
+            var message = document.getElementById('message').value;
+            if (username && message) {
+                var chatMessages = document.getElementById('chatMessages');
+                var newMessage = document.createElement('div');
+                newMessage.innerHTML = '<strong>' + username + ':</strong> ' + message;
+                chatMessages.appendChild(newMessage);
+                document.getElementById('message').value = '';
+            }
+        }
+    </script>
+</body>
+</html>
